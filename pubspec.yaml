@@ -30,6 +30,9 @@ flutter:
     - family: Eczar
       fonts:
         - asset: fonts/Eczar-Regular.ttf
+    - family: Eczar-bold
+      fonts:
+        - asset: fonts/Eczar-Bold.ttf
           
   uses-material-design: true
   assets:
