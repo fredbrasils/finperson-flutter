@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:Finperson/model/entry.dart';
+import 'package:Finperson/model/entry-bars.dart';
 
 class BarChartPainter extends CustomPainter {
   double column;
   double row;
-  Entry entry;
+  EntryBars entry;
 
-  BarChartPainter(double row, double column, Entry entry) {
+  BarChartPainter(double row, double column, EntryBars entry) {
     this.row = row;
     this.column = column;
     this.entry = entry;

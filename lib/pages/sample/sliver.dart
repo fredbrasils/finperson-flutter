@@ -1,46 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:Finperson/pages/overview/overview.dart';
-import 'package:Finperson/config/FinpersonTheme.dart';
 
-class FinpersonApp extends StatefulWidget {
-  @override
-  _FinpersonAppState createState() => _FinpersonAppState();
-}
-
-class _FinpersonAppState extends State<FinpersonApp> {
+class Sample2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Finperson',
-      theme: FinpersonTheme,
-      home: Scaffold(
-        // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: <Widget>[
-                Overview(),
-              ],
+    return SafeArea(
+      child: Material(
+        child: CustomScrollView(
+          slivers: [
+            SliverPersistentHeader(
+              delegate: MySliverAppBar(expandedHeight: 200),
+              pinned: true,
             ),
-          ),
-          // child: Material(
-          //   child: CustomScrollView(
-          //     slivers: [
-          //       SliverPersistentHeader(
-          //         delegate: MySliverAppBar(expandedHeight: 200),
-          //         pinned: true,
-          //       ),
-          //       SliverList(
-          //         delegate: SliverChildBuilderDelegate(
-          //           (_, index) => ListTile(
-          //             title: Text("Index: $index"),
-          //           ),
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (_, index) => ListTile(
+                  title: Text("Index: $index"),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
