@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'model/products_repository.dart';
-import 'model/product.dart';
-import 'supplemental/asymmetric_view.dart';
+import 'products_repository.dart';
+import 'product.dart';
+import '../sample/supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
   final Category category;

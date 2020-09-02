@@ -34,6 +34,7 @@ class _ResumePanelState extends State<ResumePanel> {
                   horizontal: SizeConfig.blockSizeHorizontal * 2,
                   vertical: SizeConfig.blockSizeVertical * 2),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

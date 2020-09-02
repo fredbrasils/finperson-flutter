@@ -1,10 +1,10 @@
-import 'supplemental/cut_corners_border.dart';
+import '../sample/supplemental/cut_corners_border.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'home.dart';
-import 'login.dart';
+import '../login.dart';
 import 'backdrop.dart';
-import 'model/product.dart';
+import 'product.dart';
 import 'category_menu_page.dart';
 
 class ShrineApp extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:Finperson/config/colors.dart';
 
-final ThemeData FinpersonTheme = _buildTheme();
+final ThemeData finpersonTheme = _buildTheme();
 
 ThemeData _buildTheme() {
   final ThemeData base = ThemeData.light();

@@ -1,8 +1,11 @@
+import 'package:Finperson/pages/overview/overview-list-entry.dart';
+import 'package:Finperson/pages/overview/overview-entry-month.dart';
 import 'package:flutter/material.dart';
 import 'package:Finperson/pages/overview/overview-head.dart';
 import 'package:Finperson/pages/overview/overview-resume.dart';
 import 'package:Finperson/pages/overview/overview-body.dart';
 import 'package:Finperson/pages/utils.dart/dimension.dart';
+import 'package:Finperson/config/size-config.dart';
 
 class Overview extends StatefulWidget {
   @override
@@ -11,33 +14,30 @@ class Overview extends StatefulWidget {
 
 class _OverviewState extends State<Overview> {
   GlobalKey containerKey;
-  // HeaderPanel headerPanel;
 
   final NotifierDimension _header =
-      NotifierDimension(Dimension(height: 2, width: 2));
+      NotifierDimension(Dimension(height: 30, width: 30));
 
   @override
   void initState() {
     super.initState();
     containerKey = GlobalKey();
-    // headerPanel = HeaderPanel(containerKey);
     WidgetsBinding.instance.addPostFrameCallback((_) => {
           _header.changeHeader(containerKey.currentContext.size.height,
-              containerKey.currentContext.size.width)
+              containerKey.currentContext.size.width),
         });
   }
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Stack(
       alignment: Alignment.topLeft,
       children: <Widget>[
-        // headerPanel,
         OverviewHeader(containerKey),
-        // overviewBody(),
         OverviewBody(notifier: _header),
         Align(
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.topCenter,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -46,11 +46,14 @@ class _OverviewState extends State<Overview> {
                   title: "REVENUE", value: "\$ 0.00", notifier: _header),
               ResumePanel(
                   title: "DISPENSE", value: "\$ 6.00", notifier: _header),
-              // resumePanel("REVENUE", "\$ 0.00"),
-              // resumePanel("DISPENSE", "\$ 6.00"),
             ],
           ),
         ),
+        OverviewList(
+          entries: [],
+          overviewEntry: OverviewMonthCategory(entries: []),
+          // overviewEntry: OverviewTransation(entries: []),
+        )
       ],
     );
   }

@@ -4,6 +4,8 @@ class SizeConfig {
   static MediaQueryData _mediaQueryData;
   static double screenWidth;
   static double screenHeight;
+  static double safeScreenWidth;
+  static double safeScreenHeight;
   static double blockSizeHorizontal;
   static double blockSizeVertical;
 
@@ -25,5 +27,7 @@ class SizeConfig {
         _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
     safeBlockHorizontal = (screenWidth - _safeAreaHorizontal) / 100;
     safeBlockVertical = (screenHeight - _safeAreaVertical) / 100;
+    safeScreenWidth = (screenWidth - _safeAreaHorizontal);
+    safeScreenHeight = (screenHeight - _safeAreaVertical);
   }
 }

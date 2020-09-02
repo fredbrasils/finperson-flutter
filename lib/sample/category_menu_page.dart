@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'colors.dart';
-import 'model/product.dart';
+import 'product.dart';
 
 class CategoryMenuPage extends StatelessWidget {
   final Category currentCategory;

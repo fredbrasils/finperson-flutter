@@ -19,21 +19,20 @@ class _OverviewHeaderState extends State<OverviewHeader> {
       margin: EdgeInsets.symmetric(
           horizontal: SizeConfig.blockSizeHorizontal,
           vertical: SizeConfig.blockSizeVertical),
-      // margin: EdgeInsets.all(5.0),
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
-        // padding: EdgeInsets.only(bottom: 40.0),
+        // color: Colors.amber,
         padding: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 5.5),
         child: Row(
           key: widget.counterKey,
           children: [
             Expanded(
               child: Container(
-                // padding: EdgeInsets.all(15.0),
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.blockSizeHorizontal * 3,
                     vertical: SizeConfig.blockSizeVertical * 3),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +47,6 @@ class _OverviewHeaderState extends State<OverviewHeader> {
                                       .copyWith(color: Colors.white)),
                             ),
                             Container(
-                              // padding: EdgeInsets.symmetric(horizontal: 25.0),
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       SizeConfig.blockSizeHorizontal * 10),
@@ -61,7 +59,6 @@ class _OverviewHeaderState extends State<OverviewHeader> {
                         Row(
                           children: [
                             Container(
-                              // padding: EdgeInsets.symmetric(horizontal: 15.0),
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       SizeConfig.blockSizeHorizontal * 4),

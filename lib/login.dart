@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import 'sample/colors.dart';
 
 class LoginPage extends StatefulWidget {
   @override

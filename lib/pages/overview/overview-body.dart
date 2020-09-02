@@ -1,6 +1,4 @@
 import 'package:Finperson/pages/overview/bar-container.dart';
-import 'package:Finperson/pages/overview/overview-month.dart';
-import 'package:Finperson/pages/overview/overview-transation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:Finperson/config/size-config.dart';
@@ -135,7 +133,6 @@ class _OverviewBodyState extends State<OverviewBody> {
                           ],
                         ),
                       ),
-                      tab == 1 ? OverviewMonthCategory() : OverviewTransation()
                     ],
                   )
                 ],
