@@ -1,3 +1,4 @@
+import 'package:Finperson/config/size-config.dart';
 import 'package:Finperson/logo/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:Finperson/pages/overview/overview.dart';
@@ -14,13 +15,16 @@ class _LogoAppState extends State<LogoApp> {
     return MaterialApp(
       title: 'Logo',
       home: Scaffold(
+        backgroundColor: Colors.green[900],
         body: SafeArea(
-            child: Container(
-          color: Colors.black,
-          width: 150,
-          height: 150,
-          child: CustomPaint(
-            painter: LogoPainter(),
+            child: Center(
+          child: Container(
+            color: Colors.transparent,
+            width: 100,
+            height: 100,
+            child: CustomPaint(
+              painter: LogoPainter(),
+            ),
           ),
         )),
       ),

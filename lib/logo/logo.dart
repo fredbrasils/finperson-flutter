@@ -2,151 +2,128 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class LogoPainter extends CustomPainter {
-/*
-          // ---------------------> X
-          // |
-          // |  (10,60)   (20,60)
-          // |
-          // |
-          // |
-          // |  (10,100)   (20,100)
-          // |
-          // V
-          // Y
-                         X  Y   X+10 Y+50
-          Rect.fromLTWH(10, 50, 10, 50)
-*/
-
   @override
   void paint(Canvas canvas, Size size) {
     double width = size.width;
     double height = size.height;
 
+    double strokeWidth = 3;
+
     var paintLine = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.square
-      ..color = Colors.green[100]
-      ..strokeWidth = 3
-      ..isAntiAlias = true;
-
-    var paint = Paint()
-      ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..color = Colors.green[700]
-      ..strokeWidth = 4
+      ..color = Colors.green[100]
+      ..strokeWidth = strokeWidth
       ..isAntiAlias = true;
 
-    var path = Path();
+    var paintGreen = Paint()
+      ..style = PaintingStyle.fill
+      ..strokeCap = StrokeCap.square
+      ..color = Colors.green[700]
+      ..isAntiAlias = true;
 
-    double espace = 12.0;
-    double line = 6.0;
+    var paintRed = Paint()
+      ..style = PaintingStyle.fill
+      ..strokeCap = StrokeCap.square
+      ..color = Colors.red[700]
+      ..isAntiAlias = true;
 
-    // top arc
-    double topLeftX = espace;
-    double topLeftY = (height * 0.15);
-    double topHandleX = (width / 2);
-    double topHandleY = 0.0;
-    double topRightX = width - espace;
-    double topRightY = (height * 0.15);
+    // top line
+    var topLeft = Offset(10.0, height * 0.35);
+    var topRight = Offset(width - 10.0, 10.0);
+    canvas.drawLine(topLeft, topRight, paintLine);
 
-    path.moveTo(topLeftX, topLeftY);
-    path.quadraticBezierTo(topHandleX, topHandleY, topRightX, topRightY);
-    canvas.drawPath(path, paint);
+    var shadowTop = Path()
+      ..moveTo(width / 2, 0)
+      ..lineTo(10.0, height * 0.35)
+      ..lineTo(width - 10.0, 10.0);
+
+    canvas.drawShadow(shadowTop, Colors.green[50], 1, true);
 
     // mini top line
-    canvas.drawLine(
-        Offset(width - espace, (height * 0.15) + espace),
-        Offset(width - espace - line, (height * 0.15) + espace + line),
-        paintLine);
+    var topMiniLeft = Offset(width - 10.0, 10.0);
+    var topMiniRight = Offset(width - 5.0, 20.0);
+    canvas.drawLine(topMiniLeft, topMiniRight, paintLine);
 
-    // bottom arc
-    double bottomLeftX = espace;
-    double bottomLeftY = height - (height * 0.15);
-    double bottomHandleX = (width / 2);
-    double bottomHandleY = height;
-    double bottomRightX = width - espace;
-    double bottomRightY = height - (height * 0.15);
+    var shadowMiniTop = Path()
+      ..moveTo(width / 2, 0)
+      ..lineTo(width - 10.0, 10.0)
+      ..lineTo(width - 5.0, 20.0);
 
-    path.moveTo(bottomLeftX, bottomLeftY);
-    path.quadraticBezierTo(
-        bottomHandleX, bottomHandleY, bottomRightX, bottomRightY);
-    canvas.drawPath(path, paint);
+    canvas.drawShadow(shadowMiniTop, Colors.green[50], 1, true);
+
+    // bottom line
+    var bottomLeft = Offset(10.0, height - 10.0);
+    var bottomRight = Offset(width - 10.0, height - height * 0.35);
+    canvas.drawLine(bottomLeft, bottomRight, paintLine);
+
+    var shadowBottom = Path()
+      ..moveTo(width / 2, height)
+      ..lineTo(10.0, height - 10.0)
+      ..lineTo(width - 10.0, height - height * 0.35);
+
+    canvas.drawShadow(shadowBottom, Colors.green[50], 1, true);
 
     // mini bottom line
-    canvas.drawLine(
-        Offset(espace, height - (height * 0.15) - (line * 2)),
-        Offset(espace + line, height - (height * 0.15) - (line * 3)),
-        paintLine);
+    var bottomMiniLeft = Offset(5.0, height - 20.0);
+    var bottomMiniRight = Offset(10.0, height - 10.0);
+    canvas.drawLine(bottomMiniLeft, bottomMiniRight, paintLine);
+
+    var shadowMiniBottom = Path()
+      ..moveTo(width / 2, height)
+      ..lineTo(5.0, height - 20.0)
+      ..lineTo(10.0, height - 10.0);
+
+    canvas.drawShadow(shadowMiniBottom, Colors.green[50], 1, true);
 
     // middle line
+    var middleLeft = Offset(10.0, height * 0.35);
+    var middleRight = Offset(width - 10.0, height - height * 0.35);
+    canvas.drawLine(middleLeft, middleRight, paintLine);
+
+    // vertical line
     canvas.drawLine(
         Offset(width / 2, 0.0), Offset(width / 2, height), paintLine);
 
-    // middle arc
-    double middleLeftX = espace;
-    double middleLeftY = (height * 0.15) + espace;
-    double middleHandleX = (width / 2) - (espace * 1);
-    double middleHandleY = (height / 2) + (espace * 2);
-    double middleRightX = width - espace;
-    double middleRightY = height - (height * 0.15) - espace;
+    canvas.drawLine(topLeft, topRight, paintLine);
 
-    path.moveTo(middleLeftX, middleLeftY);
-    path.quadraticBezierTo(
-        middleHandleX, middleHandleY, middleRightX, middleRightY);
-    canvas.drawPath(path, paint);
-
-    // bottom arc fill
-    var pathFill = Path();
-
-    var paintFill = Paint()
-      ..style = PaintingStyle.stroke
-      ..color = Colors.red[700]
-      ..strokeWidth = 12;
-    double espaceFill = 8;
-
-    double bottomFillLeftX = (width / 2) + espaceFill;
-    double bottomFillLeftY = height - (height * 0.15);
-    double bottomFillHandleX = (width * 0.75);
-    double bottomFillHandleY = height - (height * 0.15);
-    double bottomFillRightX = width - (espace * 2) - espaceFill;
-    double bottomFillRightY = height - (height * 0.15) - espaceFill;
-
-    pathFill.moveTo(bottomFillLeftX, bottomFillLeftY);
-    pathFill.quadraticBezierTo(bottomFillHandleX, bottomFillHandleY,
-        bottomFillRightX, bottomFillRightY);
-    canvas.drawPath(pathFill, paintFill);
-
-    // top arc fill
-
-    double espaceTopFill = 12;
-    double topFillLeftX = (width / 2) - (espaceTopFill * 3.5);
-    double topFillLeftY = (height / 2) - espaceTopFill;
-    double topFillCenterX = (width / 2) - 3;
-    double topFillCenterY = (height / 2) - espaceTopFill;
-    double topFillRightX = (width / 2) - 3;
-    double topFillRightY = (height / 2) + (espaceTopFill * 1.3);
-
-    final rect = Rect.fromPoints(Offset(topFillCenterX, topFillCenterY),
-        Offset(topFillLeftX + espaceTopFill, topFillLeftY + espaceTopFill));
-    final startAngle = -pi / 2;
-    final sweepAngle = pi;
-    final useCenter = false;
+    // top fill
+    double topXCenter = (width / 2) - 3.0;
+    double topXLeft = 35.0;
+    double topYLeft = height * 0.35;
 
     var pathTopFill = Path()
-      ..moveTo(topFillLeftX, topFillLeftY)
-      ..lineTo(topFillCenterX, topFillCenterY)
-      ..lineTo(topFillRightX, topFillRightY)
-      // ..arcTo(rect, startAngle, sweepAngle, useCenter)
+      ..moveTo(topXLeft, topYLeft + 5)
+      ..lineTo(topXCenter, topYLeft)
+      ..lineTo((width / 2) - 3, height / 2 - 5)
+      ..lineTo(topXLeft, topYLeft + 5);
+    canvas.drawPath(pathTopFill, paintGreen);
 
-      // ..lineTo(topFillLeftX, topFillLeftY)
-      ..lineTo(topFillRightX, topFillRightY);
+    // bottom fill
 
-    var paintTopFill = Paint()
-      ..style = PaintingStyle.fill
-      ..color = Colors.red[700]
-      ..strokeWidth = 3;
+/*
+     x         h       (width - 20) / 2
+ -------- = -------- = ------------------
+  sen 35     sen 90          sen 55
+        
+        55
+        /|
+     h / | x
+      /  |
+  35 ---- 90
 
-    // canvas.drawPath(pathTopFill, paintTopFill);
+      (width - 20) / 2
+*/
+    double x = (sin(35) * ((width / 2) - 10) / sin(55));
+    double y = height / 2 + ((height - (height * 0.35) - (height / 2)) / 2);
+    double xy = (width / 2) + strokeWidth + 5;
+
+    var pathBottomFill = Path()
+      ..moveTo((width / 2) + strokeWidth, height - x - (strokeWidth * 3))
+      ..lineTo(width - 10 - (strokeWidth * 3), height - (height * 0.35))
+      ..lineTo(xy, y);
+
+    canvas.drawPath(pathBottomFill, paintRed);
 
     canvas.save();
     canvas.restore();
