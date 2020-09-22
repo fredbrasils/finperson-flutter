@@ -71,6 +71,8 @@ class LogoPainter extends CustomPainter {
       shadowFraction = (_fraction - 1) / 1;
     }
 
+    var shadowColor = Color.fromRGBO(232, 245, 233, shadowFraction);
+
     // mini top line
     var topMiniLeft = Offset(
         width - 5 + (5 * miniLineFraction), tail - tail * miniLineFraction);
@@ -90,7 +92,7 @@ class LogoPainter extends CustomPainter {
           width / 2 + (width / 2 * shadowFraction) - 5, tail * shadowFraction);
 
     if (lineFraction == 1) {
-      canvas.drawShadow(shadowMiniTop, Colors.green[50], 1, true);
+      canvas.drawShadow(shadowMiniTop, shadowColor, shadowFraction, true);
     }
 
     // top line
@@ -115,7 +117,7 @@ class LogoPainter extends CustomPainter {
       ..lineTo(width / 2 + width / 2 * shadowFraction, -strokeWidth);
 
     if (lineFraction == 1) {
-      canvas.drawShadow(shadowTop, Colors.green[50], 1, true);
+      canvas.drawShadow(shadowTop, shadowColor, shadowFraction, true);
     }
 
     // mini bottom line
@@ -137,7 +139,7 @@ class LogoPainter extends CustomPainter {
       ..lineTo(width / 2 - (width / 2 * shadowFraction), height);
 
     if (lineFraction == 1) {
-      canvas.drawShadow(shadowMiniBottom, Colors.green[50], 1, true);
+      canvas.drawShadow(shadowMiniBottom, shadowColor, shadowFraction, true);
     }
     // bottom line
     var bottomLeft = Offset(start, height);
@@ -160,7 +162,7 @@ class LogoPainter extends CustomPainter {
           height - (height * 0.35 + strokeWidth) * shadowFraction);
 
     if (lineFraction == 1) {
-      canvas.drawShadow(shadowBottom, Colors.green[50], 1, true);
+      canvas.drawShadow(shadowBottom, shadowColor, shadowFraction, true);
     }
 
     // middle line
