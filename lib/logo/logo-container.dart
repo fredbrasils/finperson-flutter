@@ -17,16 +17,15 @@ class _LogoAppState extends State<LogoApp> {
       home: Scaffold(
         backgroundColor: Colors.green[900],
         body: SafeArea(
-            child: Center(
-          child: Container(
-            color: Colors.transparent,
-            width: 100,
-            height: 100,
-            child: CustomPaint(
-              painter: LogoPainter(),
+          child: Center(
+            child: Container(
+              color: Colors.transparent,
+              width: 100,
+              height: 100,
+              child: FinPersonLogo(),
             ),
           ),
-        )),
+        ),
       ),
     );
   }
