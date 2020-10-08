@@ -1,5 +1,7 @@
+import 'package:Finperson/pages/overview2.0/overview.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:io';
 
 class FinPersonLogo extends StatefulWidget {
   @override
@@ -10,11 +12,12 @@ class FinPersonLogoState extends State<FinPersonLogo>
     with SingleTickerProviderStateMixin {
   double _fraction = 0.0;
   Animation<double> animation;
-
+  AnimationController controller;
+  bool completed = false;
   @override
   void initState() {
     super.initState();
-    var controller = AnimationController(
+    controller = AnimationController(
         duration: Duration(milliseconds: 2000), vsync: this);
 
     animation = Tween(begin: 0.0, end: 2.0).animate(controller)
@@ -22,14 +25,39 @@ class FinPersonLogoState extends State<FinPersonLogo>
         setState(() {
           _fraction = animation.value;
         });
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) completed = true;
       });
 
     controller.forward();
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return CustomPaint(painter: LogoPainter(_fraction));
+    if (completed == true) {
+      sleep(const Duration(seconds: 1));
+      return OverviewPage();
+    } else {
+      return SafeArea(
+        child: Center(
+          child: Container(
+            color: Colors.transparent,
+            width: 100,
+            height: 100,
+            child: CustomPaint(
+              painter: LogoPainter(_fraction),
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
 
@@ -54,7 +82,7 @@ class LogoPainter extends CustomPainter {
     double tail = 20.0;
     double miniHeight = (sin(35) * (width / 2) / sin(55));
 
-    print('paint $_fraction');
+    // print('paint $_fraction');
     double miniLineFraction, lineFraction, shadowFraction;
 
     if (_fraction < .5) {

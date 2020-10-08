@@ -1,8 +1,5 @@
-import 'package:Finperson/config/size-config.dart';
 import 'package:Finperson/logo/logo.dart';
 import 'package:flutter/material.dart';
-import 'package:Finperson/pages/overview/overview.dart';
-import 'package:Finperson/config/FinpersonTheme.dart';
 
 class LogoApp extends StatefulWidget {
   @override
@@ -14,19 +11,37 @@ class _LogoAppState extends State<LogoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Logo',
-      home: Scaffold(
-        backgroundColor: Colors.green[900],
-        body: SafeArea(
-          child: Center(
-            child: Container(
-              color: Colors.transparent,
-              width: 100,
-              height: 100,
-              child: FinPersonLogo(),
-            ),
-          ),
-        ),
+      debugShowCheckedModeBanner: false,
+      home: Container(
+        color: Colors.green[900],
+        child: FinPersonLogo(),
       ),
     );
   }
 }
+
+// class _LogoAppState extends State<LogoApp> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Logo',
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         backgroundColor: Colors.green[900],
+//         body: FinPersonLogo(),
+//         floatingActionButton: FloatingActionButton(
+//           onPressed: null,
+//           backgroundColor: Colors.green[700],
+//           child: IconButton(
+//             icon: Icon(Icons.add),
+//             color: Colors.white,
+//             iconSize: 30,
+//             onPressed: () {
+//               setState(() {});
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
