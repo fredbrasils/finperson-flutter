@@ -1,4 +1,4 @@
-import 'package:Finperson/pages/overview2.0/overview.dart';
+import 'package:Finperson/pages/main/main-page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:io';
@@ -43,7 +43,7 @@ class FinPersonLogoState extends State<FinPersonLogo>
   Widget build(BuildContext context) {
     if (completed == true) {
       sleep(const Duration(seconds: 1));
-      return OverviewPage();
+      return MainPage();
     } else {
       return SafeArea(
         child: Center(

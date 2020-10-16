@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Finperson/pages/overview/overview.dart';
+import 'package:Finperson/pages/overview-old/overview.dart';
 import 'package:Finperson/config/FinpersonTheme.dart';
 
 class FinpersonApp extends StatefulWidget {

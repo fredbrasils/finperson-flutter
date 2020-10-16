@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:Finperson/pages/overview2.0/overview.dart';
+import 'package:Finperson/pages/main/main-page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';

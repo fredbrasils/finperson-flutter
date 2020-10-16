@@ -1,6 +1,6 @@
 import 'package:Finperson/model/entry-type.dart';
 import 'package:Finperson/model/entry.dart';
-import 'package:Finperson/pages/overview/overview-entry.dart';
+import 'package:Finperson/pages/overview-old/overview-entry.dart';
 import 'package:Finperson/service/entryService.dart';
 import 'package:flutter/material.dart';
 import 'package:Finperson/config/size-config.dart';
